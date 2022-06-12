@@ -48,14 +48,14 @@ router.post('/login',(req,res,next)=>{
         if(user.length < 1)
         {
             return res.status(401).json({
-                msg:"user not exist"
+                mess:"User not found"
             })
         }
         bcrypt.compare(req.body.password,user[0].password,(err,result)=>{
             if(!result)
             {
                 return res.status(401).json({
-                    mess: "password matching fail",
+                    mess: "Passwords do not match.",
                 })
             }
            if(result)
@@ -71,6 +71,7 @@ router.post('/login',(req,res,next)=>{
                 }
                 );
                 res.status(200).json({
+                    userId:user[0]._id,
                     username:user[0].username,
                     userType:user[0].userType,
                     email:user[0].email,
