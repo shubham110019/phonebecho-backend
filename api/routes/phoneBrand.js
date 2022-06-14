@@ -35,7 +35,7 @@ router.get('/:id',(req,res,next)=>{
 
 // find by brand name
 router.get('/brand/:brand',(req,res,next)=>{
-    PhoneModel.find({brand:req.params.brand}).then(result=>{
+    PhoneModel.find({brandname:req.params.brand}).then(result=>{
         res.status(200).json({
             findBrand:result
         })
