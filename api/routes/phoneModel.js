@@ -136,11 +136,7 @@ router.put('/:id',(req,res,next)=>{
             conditiongood: req.body.conditiongood,
             conditionbelow: req.body.conditionbelow,
             conditionpoor: req.body.conditionpoor,
-            variant : [{
-                phonedata: req.body.phonedata,
-                phoneurl: req.body.phoneurl,
-                phoneprice: req.body.phoneprice,
-            }]
+            variant : req.body.variant
         }
     }).then(result=>{
         res.status(200).json({
