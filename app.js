@@ -3,6 +3,7 @@ const app = express();
 const phoneRoute = require('./api/routes/phoneBrand');
 const phoneModelRoute = require('./api/routes/phoneModel');
 const userRoute = require('./api/routes/user');
+const bookmodelRoute = require('./api/routes/bookModel');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 var cors = require('cors');
@@ -24,6 +25,7 @@ app.use(bodyParser.json());
 
 app.use('/phone',phoneRoute);
 app.use('/model',phoneModelRoute);
+app.use('/phonebook',bookmodelRoute);
 
 app.use('/user',userRoute);
 
