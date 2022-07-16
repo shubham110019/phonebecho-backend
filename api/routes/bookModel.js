@@ -5,7 +5,21 @@ const mongoose = require('mongoose');
 
 //get user booking
 router.get('/',(req,res,next)=>{
-    bookModel.find().then(result=>{
+    bookModel.find().limit(req.query.limit).then(result=>{
+        res.status(200).json({
+            data:result
+        });
+    }).catch(err=>{
+        console.log(err);
+        res.status(500).json({
+            error:err
+        })
+    });
+})
+
+
+router.get('/?',(req,res,next)=>{
+    bookModel.find().limit(1).then(result=>{
         res.status(200).json({
             data:result
         });

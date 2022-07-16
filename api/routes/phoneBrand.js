@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 //get phonebrand
 router.get('/',(req,res,next)=>{
-    PhoneBrand.find().then(result=>{
+    PhoneBrand.find().limit(req.query.limit).then(result=>{
         res.status(200).json({
             brandapi:result
         });
