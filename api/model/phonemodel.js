@@ -41,6 +41,6 @@ const phoneModelSchema = new mongoose.Schema({
         phoneurl: String,
         phoneprice: String,
     }]
-})
+},{ timestamps: true })
 
 module.exports = mongoose.model('PhoneModel',phoneModelSchema);
