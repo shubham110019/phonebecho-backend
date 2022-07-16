@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 //get user booking
 router.get('/',(req,res,next)=>{
-    bookModel.find().limit(req.query.limit).then(result=>{
+    bookModel.find().limit(req.query.limit).sort({createdAt:-1}).then(result=>{
         res.status(200).json({
             data:result
         });

@@ -5,6 +5,7 @@ const phoneBrandSchema = new mongoose.Schema({
     brand:String,
     image:String,
     brandId:Number
-})
+},{ timestamps: true }
+)
 
 module.exports = mongoose.model('PhoneBrand',phoneBrandSchema);

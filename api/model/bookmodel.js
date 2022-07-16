@@ -17,6 +17,6 @@ const bookModelSchema = new mongoose.Schema({
     pickupprice:String,
     bookingtype:String,
     bookingdate:String,
-})
+},{ timestamps: true })
 
 module.exports = mongoose.model('BookModel',bookModelSchema);
