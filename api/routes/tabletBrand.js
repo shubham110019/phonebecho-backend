@@ -37,7 +37,7 @@ router.get('/:id',(req,res,next)=>{
 router.get('/brand/:brand',(req,res,next)=>{
     TabletModel.find({brandname:req.params.brand}).then(result=>{
         res.status(200).json({
-            findBrand:result
+            data:result
         })
     }).catch(err=>{
         console.log(err);
@@ -60,7 +60,7 @@ router.post('/',(req,res,next)=>{
     tabletBrand.save().then(result=>{
         console.log(result);
         res.status(200).json({
-            newTabletBrand:result
+            data:result
         })
     })
     .catch(err=>{
