@@ -42,20 +42,20 @@ router.post('/signup',(req,res,next)=>{
 
 
 router.post('/login',(req,res,next)=>{
-    User.find({username:req.body.username})
+    User.find({email:req.body.email})
     .exec()
     .then(user=>{
         if(user.length < 1)
         {
             return res.status(401).json({
-                mess:"User not found"
+                emailError:"User not found"
             })
         }
         bcrypt.compare(req.body.password,user[0].password,(err,result)=>{
             if(!result)
             {
                 return res.status(401).json({
-                    mess: "Passwords do not match.",
+                    passwordError: "Passwords do not match.",
                 })
             }
            if(result)
@@ -72,6 +72,7 @@ router.post('/login',(req,res,next)=>{
                 );
                 res.status(200).json({
                     userId:user[0]._id,
+                    email:user[0].email,
                     username:user[0].username,
                     userType:user[0].userType,
                     email:user[0].email,
@@ -86,6 +87,19 @@ router.post('/login',(req,res,next)=>{
             error:err
         })
     })
+})
+
+router.get('/',(req,res,next)=>{
+    User.find().then(result=>{
+        res.status(200).json({
+            data:result
+        });
+    }).catch(err=>{
+        console.log(err);
+        res.status(500).json({
+            error:err
+        })
+    });
 })
 
 
