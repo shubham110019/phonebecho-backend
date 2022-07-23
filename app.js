@@ -6,8 +6,11 @@ const userRoute = require('./api/routes/user');
 const bookmodelRoute = require('./api/routes/bookModel');
 const TabletRoute = require('./api/routes/tabletBrand');
 const TabletModelRoute = require('./api/routes/tabletModel');
+
+const CityRoute = require('./api/routes/city');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+
 var cors = require('cors');
 
 
@@ -32,6 +35,7 @@ app.use('/tablet',TabletRoute)
 app.use('/tabletmodel/',TabletModelRoute)
 
 app.use('/user',userRoute);
+app.use('/pickcity/',CityRoute)
 
 
 module.exports = app;
