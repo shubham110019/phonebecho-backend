@@ -30,7 +30,8 @@ router.post('/signup', (req, res, next) => {
                             email: req.body.email,
                             phone: req.body.phone,
                             userType: req.body.userType,
-                            image: req.body.image
+                            image: req.body.image,
+                            useractive:0,
                         })
                         user.save().then(result => {
                             // console.log(result);
@@ -107,6 +108,39 @@ router.get('/', (req, res, next) => {
             error: err
         })
     });
+})
+
+// user delete
+router.delete('/:id',(req,res,next)=>{
+    User.remove({_id:req.params.id}).then(result=>{
+        res.status(200).json({
+            message:'user delete',
+            result:result
+        })
+    }).catch(err=>{
+        res.status(500).json({
+            error:err
+        })
+    })
+})
+
+// user update
+// put by id phonebrand
+router.put('/:id',(req,res,next)=>{
+    User.findOneAndUpdate({_id:req.params.id},{
+        $set:{
+            useractive:req.body.useractive,
+        }
+    }).then(result=>{
+        res.status(200).json({
+            data:result
+        })
+    }).catch(err=>{
+        console.log(err);
+        res.status(500).json({
+            error:err
+        })
+    })
 })
 
 
