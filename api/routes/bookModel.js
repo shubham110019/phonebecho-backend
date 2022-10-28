@@ -17,6 +17,20 @@ router.get('/',(req,res,next)=>{
     });
 })
 
+// mobile get by today date
+router.get('/mtddate',(req,res,next)=>{
+    bookModel.find({'bookingtype':'mobile'}).then(result=>{
+        res.status(200).json({
+            data:result
+        });
+    }).catch(err=>{
+        console.log(err);
+        res.status(500).json({
+            error:err
+        })
+    });
+})
+
 
 router.get('/?',(req,res,next)=>{
     bookModel.find().limit(1).then(result=>{
@@ -93,6 +107,11 @@ router.delete('/:id',(req,res,next)=>{
         })
     })
 })
+
+
+
+
+
 
 
 
