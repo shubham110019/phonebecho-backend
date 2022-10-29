@@ -63,6 +63,7 @@ router.get('/:id',(req,res,next)=>{
 router.post('/',(req,res,next)=>{
     const bookmodel = new bookModel({
         _id: new mongoose.Types.ObjectId,
+        userid:req.body.userid,
         fullname:req.body.fullname,
         email:req.body.email,
         phone:req.body.phone,
@@ -77,6 +78,7 @@ router.post('/',(req,res,next)=>{
         phonecondition:req.body.phonecondition,
         pickupprice:req.body.pickupprice,
         bookingtype:req.body.bookingtype,
+        bookingstatus:0,
         bookingdate: new Date(),
     })
     bookmodel.save().then(result=>{
